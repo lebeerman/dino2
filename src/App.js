@@ -6,13 +6,12 @@ import Profiles from './components/Profiles';
 import Footer from './components/Footer';
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.addActiveClass = this.addActiveClass.bind(this);
-    this.state = { 
-      profiles: [],
-      active: false
-    }
+
+    this.state = {
+      profiles: []
+    };
   }
 
   componentDidMount() {
@@ -24,29 +23,28 @@ class App extends Component {
     return fetch(apiURL)
       .then(response => response.json())
       .then(cardData => {
-        this.setState({ profiles: cardData });
-        console.dir( this.state);
-      })
-  };
-  
-  toggleClass() {
-    const currentState = this.state.active;
-    console.log('CHANGING!'+ currentState)
-    document.querySelector('.skills-container').classList.add('hidden');
-    this.setState({ active: !currentState });
+        this.setState({ profiles: cardData.map(card => {
+          return {...card,...{styleCondition:true}}
+        })
+      });
+        console.table(this.state.profiles);
+      });
   };
 
-  addActiveClass() {
-    this.setState({
-      active: true
-    })
+  toggleClass = (card) => {
+    console.log('YOU ARE ', card);
+    // const currCard = this.state.profiles.filter(p => p.name === card.name);
+    // console.log(currCard.styleCondition);
+    card.styleCondition = !card.styleCondition;
+    console.log(card.styleCondition);
+    this.setState({profiles: this.state.profiles});
   };
 
   render() {
     return (
       <div>
         <Header />
-        <Profiles profiles={this.state.profiles} />
+        <Profiles profiles={this.state.profiles} toggleClass={this.toggleClass}/>
         <Footer />
       </div>
     );
