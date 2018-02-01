@@ -6,7 +6,7 @@ class ProfileCards extends React.Component {
   render() {
     console.log('made it!');
     return (
-      <ul>
+      <ul id="profiles">
         {this.props.profiles.map((card, i) => {
           return <Card card={card} key={i} toggleClass={this.props.toggleClass} styleCondition={card.styleCondition} />;
         })}
