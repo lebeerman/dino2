@@ -6,10 +6,7 @@
   });
 })();
 
-function getDinosaurs() {
-  let apiURL = './dinosaurs.json';
-  return fetch(apiURL).then(response => response.json());
-}
+
 
 function addProfileItem(profileItem) {
   document.querySelector('#profiles').appendChild(profileItem);
