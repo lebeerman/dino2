@@ -22,6 +22,8 @@
 2. Host your app locally on port `8080`.
 3. Navigate to this folder and run `npm test`.
 
-#### Deployed Link
+#### [Deployed Link](https://dino2-react.firebaseapp.com)
 
-#### Framework of choice
+#### Framework of choice: REACT
+
+Notes: deployed to firebase: firebase init, npm run build, firebase deploy - spa
